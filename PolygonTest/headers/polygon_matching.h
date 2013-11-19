@@ -1,9 +1,9 @@
-#ifndef POLYGON_MATCHING_H
-#define	POLYGON_MATCHING_H
+#pragma once
+
 #include "stdafx.h"
 #include "math.h"
 #include "geom/primitives/point.h"
-//#include "algorithms.h"
+#include "algorithms.h"
 #include <limits.h>"
 
 #include "opencv2/core/core.hpp"
@@ -11,14 +11,13 @@
 #include "opencv2/features2d/features2d.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/nonfree/nonfree.hpp"
-#include "algorithms.h"
 
 using namespace std;
 using namespace cv;
 
 typedef std::vector<point_type> polygon_type;
 
-#define BITMAP_RESOLUTION 200
+#define BITMAP_RESOLUTION 400
 
 // be careful, because it return not in screen coordinates
 
@@ -70,13 +69,19 @@ polygon_type get_scaled_polygon(int boxSize, const polygon_type& polygon) {
     Rect box = get_bounding_box(pc);
 
     for (auto& p : pc) {
+        
         int x = p.x - box.x;
         int y = p.y - box.y;
+        
+        cout << x + box.x << " " << y + box.y << "->";
+        
+        cout << x << " " << y << "->";
         x = (x * boxSize) / box.width;
         y = (y * boxSize) / box.height;
         y = boxSize - y;
         p.x = x;
         p.y = y;
+        cout << x << " " << y << endl;
     }
 
     return pc;
@@ -84,7 +89,7 @@ polygon_type get_scaled_polygon(int boxSize, const polygon_type& polygon) {
 }
 
 void draw_polygon(Mat& img, const polygon_type& pc) {
-    for (size_t i = 0; i < pc.size(); i++) {
+    for (size_t i = 1; i < pc.size(); i++) {
         Point pa(pc[i].x, pc[i].y);
         Point pb(pc[i - 1].x, pc[i - 1].y);
         line(img, pa, pb, Scalar(0));
@@ -94,7 +99,7 @@ void draw_polygon(Mat& img, const polygon_type& pc) {
     line(img, pa, pb, Scalar(0));
 }
 
-void draw_gradient_polygon(Mat& img, const polygon_type& polygon){
+void draw_gradient_polygon_blur(Mat& img, const polygon_type& polygon){
     
     polygon_type pc = get_scaled_polygon(BITMAP_RESOLUTION, polygon);
 
@@ -111,6 +116,24 @@ void draw_gradient_polygon(Mat& img, const polygon_type& polygon){
                 img.at<uchar>(i, j) = (uchar) 255;
             }
         }
+    }   
+}
+
+void draw_gradient_polygon_dist(Mat& img, const polygon_type& polygon) {
+    
+    
+    polygon_type pc = get_scaled_polygon(BITMAP_RESOLUTION, polygon);
+    
+//    draw_polygon(img, pc);
+
+    for (int i = 0; i < BITMAP_RESOLUTION; i++) {
+        for (int j = 0; j < BITMAP_RESOLUTION; j++) {
+            double d = geom::algorithms::dist(pc, point_type(j, i));
+            d *= 2;
+            d = min(d, 255.0);
+            uchar color = (uchar) d;
+            img.at<uchar>(i, j) = color;
+        }
     }
     
 }
@@ -120,7 +143,7 @@ void show_polygon(const polygon_type& polygon) {
     Mat gray_buf(Size(BITMAP_RESOLUTION, BITMAP_RESOLUTION),
             CV_LOAD_IMAGE_GRAYSCALE, 255);
     
-    draw_gradient_polygon(gray_buf, polygon);
+    draw_gradient_polygon_dist(gray_buf, polygon);
     
 
     imshow("some win", gray_buf);
@@ -145,5 +168,4 @@ size_t find_best_match_i(const polygon_type& p, vector<polygon_type>& others) {
     return bestI;
 }
 
-#endif
 

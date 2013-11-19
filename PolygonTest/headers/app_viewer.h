@@ -1,5 +1,4 @@
-#ifndef APP_VIEWER_H
-#define	APP_VIEWER_H
+#pragma once
 
 #include "visualization/viewer_adapter.h"
 #include "visualization/draw_util.h"
@@ -48,5 +47,4 @@ private:
     bool is_match_draw_state = false;
 };
 
-#endif
 

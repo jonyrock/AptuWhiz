@@ -9,13 +9,21 @@
 
 namespace geom {
     namespace algorithms {
+
         void triangulate(const polygon_type& polygon, vector<segment_type>& res) {
             vector<pair<size_t, size_t> > diagonals = get_tri_split(polygon);
-            
+
         }
-        
+
+        int cross_prod(point_type a, point_type b, point_type c) {
+            return a.x * (b.y - c.y) - a.y * (b.x - c.x) + (b.x * c.y - b.y * c.x);
+        }
+        int cross_prod(const segment_type& segment, point_type p) {
+            return cross_prod(segment[0], segment[1], p);
+        }
+
         int left_turn(point_type a, point_type b, point_type c) {
-            int det = a.x * (b.y - c.y) - a.y * (b.x - c.x) + (b.x * c.y - b.y * c.x);
+            int det = cross_prod(a, b, c);
             if (det > 0) return 1;
             if (det < 0) return -1;
             return 0;
@@ -53,6 +61,12 @@ namespace geom {
 
             return (res1 <= 0 && res2 <= 0);
 
+        }
+
+        double segment_length(const segment_type& s) {
+            double xLen = s[0].x - s[1].x * 1.0;
+            double yLen = s[0].y - s[1].y * 1.0;
+            return sqrt(xLen * xLen + yLen * yLen);
         }
 
         bool orient_polygon_anticlockwise(vector<point_type>& pts_) {
@@ -259,34 +273,34 @@ namespace geom {
             for (size_t i : orderByXY) {
 
                 auto type = get_trip_type(polygon, i, false);
-                if(type == TRIP_START) {
+                if (type == TRIP_START) {
                     status.add(i);
                     continue;
                 }
-                
+
                 bool foundGoodHelper = false;
                 size_t helper = status.helper(i);
-                if(helper != (size_t) (-1) && helper != prev(polygon, i)){
+                if (helper != (size_t) (-1) && helper != prev(polygon, i)) {
                     foundGoodHelper = true;
                 }
-                if(!foundGoodHelper){
+                if (!foundGoodHelper) {
                     size_t lowerSegmentI = status.find_lower_segment(i);
-                    if(lowerSegmentI != (size_t)(-1)) {
+                    if (lowerSegmentI != (size_t) (-1)) {
                         helper = status.helper(lowerSegmentI);
                         foundGoodHelper = true;
                     }
                 }
-                if(foundGoodHelper){
+                if (foundGoodHelper) {
                     TRIP_TYPE helperType = get_trip_type(polygon, helper, false);
                     cout << "(" << i << ", " << helper << ") " << endl;
-                    if(helperType == TRIP_MERGE) {
+                    if (helperType == TRIP_MERGE) {
                         res.push_back(make_pair(helper, i));
                     }
-                    if(type == TRIP_SPLIT) {
+                    if (type == TRIP_SPLIT) {
                         res.push_back(make_pair(helper, i));
                     }
                 }
-                status.remove(i); 
+                status.remove(i);
                 status.update(i);
                 status.add(i);
             }
@@ -294,7 +308,7 @@ namespace geom {
             return res;
 
         }
-        
+
         TRIP_TYPE get_trip_type(const vector<point_type>& polygon, size_t index,
                 bool isInHole) {
             auto pbefore = polygon[(index > 0) ? index - 1 : polygon.size() - 1];
@@ -310,7 +324,7 @@ namespace geom {
                 auto turn = left_turn(pbefore, pme, pafter);
                 if (isInHole) turn *= -1;
                 if (turn > 0) return TRIP_START;
-                
+
             }
             if (pme.x < pbefore.x && pme.x < pafter.x) {
                 return TRIP_SPLIT;
@@ -326,7 +340,51 @@ namespace geom {
             return TRIP_REGULAR;
 
         }
+        
+        double dot_product(const point_type& a, const point_type& b){
+            return a.x * b.x + a.y * b.y;
+        }
+        
+        double dist(const segment_type& s, const point_type& p) {
+            int cross = cross_prod(s, p);
+            double len = segment_length(s);
+            double lenLine = abs(cross / len);
+            double lenLeft = segment_length(segment_type(p, s[0]));
+            double lenRight = segment_length(segment_type(p, s[1]));
+            
+            point_type vl(s[1].x - s[0].x, s[1].y - s[0].y);
+            point_type wl(p.x - s[0].x, p.y - s[0].y);
+            double c1 = dot_product(wl, vl);
+            if(c1 <= 0)
+                return lenLeft;
+            
+            point_type vr(s[0].x - s[1].x, s[0].y - s[1].y);
+            point_type wr(p.x - s[1].x, p.y - s[1].y);
+            double c2 = dot_product(wr, vr);
+            if (c2 <= 0)
+                return lenRight;
+            return lenLine;
+        }
 
+        double dist(const point_type& p, const segment_type& s) {
+            return dist(s, p);
+        }
+
+        double dist(const polygon_type& pc, const point_type& p) {
+            double minDist = INT_MAX * 1.0;
+            for (size_t i = 1; i < pc.size(); i++) {
+                point_type pa(pc[i].x, pc[i].y);
+                point_type pb(pc[i - 1].x, pc[i - 1].y);
+                double myDist = dist(segment_type(pa, pb), p);
+                if (myDist < minDist) 
+                    minDist = myDist;
+            }
+            point_type pa(pc.front().x, pc.front().y);
+            point_type pb(pc.back().x, pc.back().y);
+            double myDist = dist(segment_type(pa, pb), p);
+            if (myDist < minDist) minDist = myDist;
+            return minDist;
+        }
     }
 }
 
