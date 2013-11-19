@@ -1,0 +1,17 @@
+Monotonous polygon triangulation in O(n log n) time.
+
+Make project: 
+    git submodule update --init
+    cd visualization
+    (optionally rm PRECOMPILED_HEADER = stdafx.h in geom.visualization.pro)
+    qmake && make
+    cd ..
+    qmake && make
+
+
+Space to space to start drawing polygon. Last edge will be added automatically!
+Add polygon point:   double click (in polygon drawing mode)
+Build triangulation: press key 'Enter' (only if polygon is loaded)
+Save points:         press key 'S'
+Load points:         press key 'L'
+

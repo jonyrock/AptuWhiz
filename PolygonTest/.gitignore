@@ -1,0 +1,7 @@
+nbproject/*
+*.o
+*.gch
+*.swp
+Makefile
+triHolesLog
+
