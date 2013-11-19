@@ -1,5 +1,5 @@
 
-#include "algorithms.h"
+#include "geom_algorithms.h"
 
 #include <vector>
 #include <iostream>
@@ -12,12 +12,12 @@ namespace geom {
 
         void triangulate(const polygon_type& polygon, vector<segment_type>& res) {
             vector<pair<size_t, size_t> > diagonals = get_tri_split(polygon);
-
         }
 
         int cross_prod(point_type a, point_type b, point_type c) {
             return a.x * (b.y - c.y) - a.y * (b.x - c.x) + (b.x * c.y - b.y * c.x);
         }
+
         int cross_prod(const segment_type& segment, point_type p) {
             return cross_prod(segment[0], segment[1], p);
         }
@@ -340,24 +340,24 @@ namespace geom {
             return TRIP_REGULAR;
 
         }
-        
-        double dot_product(const point_type& a, const point_type& b){
+
+        double dot_product(const point_type& a, const point_type& b) {
             return a.x * b.x + a.y * b.y;
         }
-        
+
         double dist(const segment_type& s, const point_type& p) {
             int cross = cross_prod(s, p);
             double len = segment_length(s);
             double lenLine = abs(cross / len);
             double lenLeft = segment_length(segment_type(p, s[0]));
             double lenRight = segment_length(segment_type(p, s[1]));
-            
+
             point_type vl(s[1].x - s[0].x, s[1].y - s[0].y);
             point_type wl(p.x - s[0].x, p.y - s[0].y);
             double c1 = dot_product(wl, vl);
-            if(c1 <= 0)
+            if (c1 <= 0)
                 return lenLeft;
-            
+
             point_type vr(s[0].x - s[1].x, s[0].y - s[1].y);
             point_type wr(p.x - s[1].x, p.y - s[1].y);
             double c2 = dot_product(wr, vr);
@@ -376,7 +376,7 @@ namespace geom {
                 point_type pa(pc[i].x, pc[i].y);
                 point_type pb(pc[i - 1].x, pc[i - 1].y);
                 double myDist = dist(segment_type(pa, pb), p);
-                if (myDist < minDist) 
+                if (myDist < minDist)
                     minDist = myDist;
             }
             point_type pa(pc.front().x, pc.front().y);

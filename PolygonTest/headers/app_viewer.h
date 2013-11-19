@@ -4,7 +4,7 @@
 #include "visualization/draw_util.h"
 #include "io/point.h"
 
-#include "algorithms.h"
+#include "geom_algorithms.h"
 #include <iostream>
 
 using namespace visualization;

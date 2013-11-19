@@ -5,7 +5,7 @@
 #include "geom/primitives/segment.h"
 #include "geom/primitives/vector.h"
 #include "visualization/viewer.h"
-#include "algorithms.h"
+#include "geom_algorithms.h"
 
 #include "math.h"
 

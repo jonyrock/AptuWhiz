@@ -120,7 +120,7 @@ CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: /usr/include/qt5/QtWidgets/qd
 CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: /usr/include/qt5/QtWidgets/qfiledialog.h
 CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: /usr/include/qt5/QtWidgets/qsizepolicy.h
 CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: /usr/include/qt5/QtWidgets/qwidget.h
-CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: headers/algorithms.h
+CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: headers/geom_algorithms.h
 CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: headers/stdafx.h
 CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: visualization/headers/geom/primitives/point.h
 CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o: visualization/headers/geom/primitives/range.h
@@ -265,9 +265,9 @@ CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: /usr/local/include/opencv2/im
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: /usr/local/include/opencv2/imgproc/types_c.h
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: /usr/local/include/opencv2/nonfree/features2d.hpp
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: /usr/local/include/opencv2/nonfree/nonfree.hpp
-CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: headers/algorithms.h
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: headers/app_viewer.h
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: headers/drawer.h
+CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: headers/geom_algorithms.h
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: headers/polygon_matching.h
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: headers/stdafx.h
 CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o: visualization/headers/common/range.h

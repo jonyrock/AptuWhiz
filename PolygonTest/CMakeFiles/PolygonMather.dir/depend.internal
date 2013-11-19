@@ -121,7 +121,7 @@ CMakeFiles/PolygonMather.dir/src/algorithms.cpp.o
  /usr/include/qt5/QtWidgets/qfiledialog.h
  /usr/include/qt5/QtWidgets/qsizepolicy.h
  /usr/include/qt5/QtWidgets/qwidget.h
- headers/algorithms.h
+ headers/geom_algorithms.h
  headers/stdafx.h
  visualization/headers/geom/primitives/point.h
  visualization/headers/geom/primitives/range.h
@@ -266,9 +266,9 @@ CMakeFiles/PolygonMather.dir/src/app_viewer.cpp.o
  /usr/local/include/opencv2/imgproc/types_c.h
  /usr/local/include/opencv2/nonfree/features2d.hpp
  /usr/local/include/opencv2/nonfree/nonfree.hpp
- headers/algorithms.h
  headers/app_viewer.h
  headers/drawer.h
+ headers/geom_algorithms.h
  headers/polygon_matching.h
  headers/stdafx.h
  visualization/headers/common/range.h

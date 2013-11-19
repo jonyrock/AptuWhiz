@@ -1,7 +1,7 @@
 #include "app_viewer.h"
 #include "stdafx.h"
 #include "drawer.h"
-#include "algorithms.h"
+#include "geom_algorithms.h"
 #include "polygon_matching.h"
 
 void app_viewer::draw(drawer_type & drawer) const {
