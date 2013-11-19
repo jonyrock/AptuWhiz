@@ -24,5 +24,3 @@ qt5_use_modules( ${PROJECTNAME} OpenGL)
 
 target_link_libraries( ${PROJECTNAME} ${OpenCV_LIBS} ${OPENGL_LIBRARIES} ${QT_LIBRARIES} )
 target_link_libraries( ${PROJECTNAME} ${CMAKE_CURRENT_SOURCE_DIR}/visualization/libvisualization.a)
-
-
