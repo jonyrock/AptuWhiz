@@ -166,13 +166,13 @@ int match(const polygon_type& pca, const polygon_type& pcb) {
 
     draw_gradient_polygon_dist(imga, pca);
     
-    imshow("some win", imga);
+//    imshow("some win", imga);
 
     Mat imgb(Size(BITMAP_RESOLUTION * 2, BITMAP_RESOLUTION * 2),
             CV_LOAD_IMAGE_GRAYSCALE, 255);
 
     draw_gradient_polygon_dist(imgb, pcb);
-    imshow("some win" + kkk, imgb);
+//    imshow("some win" + kkk, imgb);
     kkk++;
 
     int offsetX = 0;
