@@ -31,6 +31,8 @@ namespace geom {
         
         int cross_prod(const segment_type& segment, point_type p);
         
+        double polygon_diameter(const polygon_type& pc);
+        
         int left_turn(point_type a, point_type b, point_type c);
 
         int left_turn(const segment_type& segment, point_type p);

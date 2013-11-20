@@ -1,11 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 
-SET(PROJECTNAME PolygonMather)
+SET(PROJECTNAME PolygonMatcher)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-
 project(PolygonMather)
-
 
 find_package(OpenCV REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -18,7 +16,7 @@ include_directories( src )
 include_directories( visualization/headers )
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable( ${PROJECTNAME} src/main.cpp src/algorithms.cpp src/app_viewer.cpp)
+add_executable( ${PROJECTNAME} src/main.cpp src/geom_algorithms.cpp src/app_viewer.cpp)
 qt5_use_modules( ${PROJECTNAME} Widgets)
 qt5_use_modules( ${PROJECTNAME} OpenGL)
 

@@ -22,6 +22,17 @@ namespace geom {
             return cross_prod(segment[0], segment[1], p);
         }
 
+        double polygon_diameter(const polygon_type& pc) {
+            double biggestDist = 0;
+            for (int i = 0; i < pc.size(); i++) {
+                for (int j = i + 1; j < pc.size(); j++) {
+                    double myDist = segment_length(segment_type(pc[i], pc[j]));
+                    biggestDist = std::max(biggestDist, myDist);
+                }
+            }
+            return biggestDist;
+        }
+
         int left_turn(point_type a, point_type b, point_type c) {
             int det = cross_prod(a, b, c);
             if (det > 0) return 1;
