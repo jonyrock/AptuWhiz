@@ -4,10 +4,10 @@
     <list default="true" id="95714c06-c096-41e0-973c-c45714f007b1" name="Default" comment="" />
     <ignored path="whiz.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1384762302410" ignored="false" />
+    <file path="/Dummy.txt" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1386194064392" ignored="false" />
     <file path="/.gitignore" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1382946789066" ignored="false" />
-    <file path="/main.py" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1384762364502" ignored="false" />
-    <file path="/snippets.py" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1383321495863" ignored="false" />
+    <file path="/main.py" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1386199963808" ignored="false" />
+    <file path="/snippets.py" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1386194734374" ignored="false" />
     <file path="/TODO.txt" changelist="95714c06-c096-41e0-973c-c45714f007b1" time="1383327876917" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +31,25 @@
       <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="23" selection-start="743" selection-end="743" vertical-scroll-proportion="0.6683761">
-              <folding />
+            <state line="9" column="13" selection-start="215" selection-end="215" vertical-scroll-proportion="0.2670157">
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="numeric.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python2.7/dist-packages/numpy/core/numeric.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="226" column="21" selection-start="6678" selection-end="6678" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1365311045000" expanded="true" signature="43630:43687" placeholder="..." />
+                <marker date="1365311045000" expanded="true" signature="68936:69011" placeholder="..." />
+                <marker date="1365311045000" expanded="true" signature="69463:69535" placeholder="..." />
+                <marker date="1365311045000" expanded="true" signature="69497:69535" placeholder="..." />
+                <marker date="1365311045000" expanded="true" signature="71224:71299" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,23 +66,9 @@
       <file leaf-file-name="snippets.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/snippets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="29" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0">
+            <state line="5" column="17" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="out.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="out1.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out1.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -97,16 +100,17 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/snippets.py" />
         <option value="$PROJECT_DIR$/TODO.txt" />
+        <option value="$PROJECT_DIR$/mainPrev.py" />
+        <option value="$PROJECT_DIR$/snippets.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-2" />
-    <option name="width" value="1924" />
-    <option name="height" value="1057" />
+    <option name="width" value="1370" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -174,7 +178,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Aptu/CV/CompVisionHWgit/task5_panorama/python" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -300,15 +304,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="0" width="1924" height="1057" extended-state="6" />
+    <frame x="-2" y="0" width="1370" height="745" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18516542" sideWeight="0.67105263" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39802632" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19015151" sideWeight="0.49166667" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5083333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -355,7 +359,7 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
     <option name="LIMIT_HISTORY" value="true" />
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
@@ -385,55 +389,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="11" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/snippets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="37" selection-start="66" selection-end="66" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="11" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="31" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/snippets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="37" selection-start="66" selection-end="66" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/map_s.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/polygonsDrawedBold.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/polygonsDrawedThin.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -446,33 +405,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1247972723/cv2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1862" column="4" selection-start="52816" selection-end="52816" vertical-scroll-proportion="0.33216783">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/snippets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="29" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -482,10 +417,93 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/onePolygon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snippets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1247972723/cv2/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1597" column="4" selection-start="42314" selection-end="42314" vertical-scroll-proportion="0.33229813">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1247972723/cv2/cv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="520" column="0" selection-start="7788" selection-end="7788" vertical-scroll-proportion="0.33229813">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainPrev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="46" selection-start="613" selection-end="624" vertical-scroll-proportion="0.65970147">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1247972723/numpy/core/multiarray.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1688" column="4" selection-start="58546" selection-end="58546" vertical-scroll-proportion="0.33229813">
+          <folding>
+            <marker date="1379947702952" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/numpy/core/numeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="226" column="21" selection-start="6678" selection-end="6678" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1365311045000" expanded="true" signature="43630:43687" placeholder="..." />
+            <marker date="1365311045000" expanded="true" signature="68936:69011" placeholder="..." />
+            <marker date="1365311045000" expanded="true" signature="69463:69535" placeholder="..." />
+            <marker date="1365311045000" expanded="true" signature="69497:69535" placeholder="..." />
+            <marker date="1365311045000" expanded="true" signature="71224:71299" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1247972723/_random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="8" selection-start="815" selection-end="815" vertical-scroll-proportion="0.42233858">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="880" column="20" selection-start="31571" selection-end="31571" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="23" selection-start="743" selection-end="743" vertical-scroll-proportion="0.6683761">
-          <folding />
+        <state line="9" column="13" selection-start="215" selection-end="215" vertical-scroll-proportion="0.2670157">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

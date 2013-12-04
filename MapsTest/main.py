@@ -1,26 +1,31 @@
 import cv2
 import numpy as np
 from snippets import waitEnter
+import random
 
-# img = cv2.imread('resources/polygonsDrawedBold.png')
-img = cv2.imread('resources/map_s.png')
-# img = cv2.imread('resources/polygonsDrawedThin.png')
+
+img = cv2.imread('resources/onePolygon2x.png')
 imgGray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+# cv2.imshow('name', imgGray)
+# waitEnter()
+imgGray = cv2.fastNlMeansDenoising(imgGray, h=5, templateWindowSize=10)
+# cv2.imshow('name', imgGray)
+# waitEnter()
 
-edges = cv2.Canny(img, 200, 100)
+edges = cv2.Canny(imgGray, 200, 100)
 cv2.imshow('name', edges)
-cv2.imwrite('out1.png', edges)
 waitEnter()
-cv2.destroyWindow('name')
 
-edgesToDraw = cv2.cvtColor(edges, cv2.COLOR_GRAY2RGB)
+contours, hierarchy = cv2.findContours(edges, cv2.cv.CV_RETR_LIST, cv2.cv.CV_CHAIN_APPROX_TC89_KCOS)
 
-lines = cv2.HoughLinesP(edges.copy(), 1, np.pi / 180, 3, minLineLength=30, maxLineGap=10)
-for x1, y1, x2, y2 in lines[0]:
-    cv2.line(edgesToDraw, (x1, y1), (x2, y2), (0, 255, 0), 2)
+contoursImage = np.zeros(img.shape, np.uint8)
 
-# cv2.imshow('houghlines', edgesToDraw)
-cv2.imwrite('out2.png', edgesToDraw)
+
+
+for i in range(0, len(contours)):
+    color = (random.randint(20,255),random.randint(20,255), random.randint(20,255))
+    cv2.drawContours(contoursImage, contours, i, color)
+cv2.imshow('name', contoursImage)
 waitEnter()
 
 cv2.destroyAllWindows()
