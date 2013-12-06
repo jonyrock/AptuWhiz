@@ -38,7 +38,7 @@ DCEL::Edge* DCEL::add_segment(const point_type& u, const point_type& v) {
 
 void DCEL::insert_new_edge(Edge* edge) {
     const Vertex& from = edge->from();
-    if (vertexEdge[from] == NULL) {
+    if (vertexEdge.find(from) == vertexEdge.end() || vertexEdge[from] == NULL) {
         vertexEdge[from] = edge;
         edge->right_next(edge);
         return;
@@ -72,13 +72,16 @@ void DCEL::insert_new_edge(Edge* edge) {
     }
 
     if (prevEdge == NULL) {
-
         cout << "-----------" << endl;
         for (auto e : edges) {
-            cout << angle2pi(e) << " ";
+            cout << *e << ", ";
+            cout << angle2pi(e) << " " << endl;
         }
-        cout << " vs " << eangle << endl;
+        cout << "vvvvvvvvvvvvv" << endl;
+        cout << *edge << ", ";
+        cout << eangle << endl;
         cout << "***********" << endl;
+        throw logic_error("can't find prev edge!");
     }
 
     edge->right_next(prevEdge->right_next());

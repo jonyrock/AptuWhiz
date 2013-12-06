@@ -12,8 +12,8 @@
 using namespace std;
 
 class DCEL {
+public:
 
-public:    
     struct Vertex {
         point_type point;
 
@@ -64,6 +64,11 @@ public:
 
         inline segment_type get_segment() const {
             return segment_type(from().point, to().point);
+        }
+
+        friend std::ostream & operator <<(std::ostream & out, DCEL::Edge const & e) {
+            out << e.from().point << " -> " << e.to().point;
+            return out;
         }
     };
 

@@ -18,7 +18,14 @@ void waitEnter(){
 
 int main(int argc, char** argv) {
 
-    freopen("contours.txt", "w", stdin);
+    auto f = freopen("contours.txt", "r", stdin);
+    if(!f){
+        cerr << "can't open file" << endl;
+        return 0;
+    }
+    
+    int width, height;
+    cin >> width >> height;
     
     int N;
     cin >> N;
@@ -27,16 +34,13 @@ int main(int argc, char** argv) {
     
     DCEL dcel;
     
-    Mat img(Size(300, 300), CV_LOAD_IMAGE_GRAYSCALE);
-    imshow("Contours", img);
-    waitEnter();
+    Mat img(Size(height, width), CV_LOAD_IMAGE_GRAYSCALE, 255);
     
     
     REP(i, N) {
         int n;
         cin >> n;
         bool idlePolygon = n < 10;
-            
         point_type pprev;
         cin >> pprev;
         REP(j, n - 1) {
@@ -45,10 +49,14 @@ int main(int argc, char** argv) {
             if(idlePolygon)
                 continue;
             dcel.add_segment(p, pprev);
+//            line(img, pprev, p, Scalar(10), 40, 1);
             
             pprev = p;
         }
     }
+    
+    imshow("Contours", img);
+    waitEnter();
     
     
     

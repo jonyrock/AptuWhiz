@@ -1,5 +1,7 @@
 #pragma once
 
+#include "opencv2/core/core.hpp"
+
 struct point_type {
     int x, y;
 
@@ -11,6 +13,15 @@ struct point_type {
     point_type()
     : x(0)
     , y(0) {
+    }
+
+    operator cv::Point() {
+        return cv::Point(x, y);
+    }
+
+    friend std::ostream & operator <<(std::ostream & out, point_type const & pt) {
+        out << "(" << pt.x << ", " << pt.y << ")";
+        return out;
     }
 
 };

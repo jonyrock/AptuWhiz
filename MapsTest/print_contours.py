@@ -1,11 +1,11 @@
 
 
 def print_contours(contours, shape):
-    f = open('contours.txt', 'w')
+    f = open('../PolygonDetector/contours.txt', 'w')
     def writeln(str_):
         f.write(str(str_))
         f.write('\n')
-    writeln("{} {}".format(shape[0], shape[1]))
+    writeln("{} {}".format(shape[1], shape[0]))
     writeln(len(contours))
     for c in contours:
         writeln(str(len(c)))
