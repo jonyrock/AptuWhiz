@@ -15,7 +15,7 @@ imgGray = cv2.fastNlMeansDenoising(imgGray, h=5, templateWindowSize=10)
 # cv2.imshow('name', imgGray)
 # waitEnter()
 
-borders = cv2.Canny(imgGray, 20, 100)
+borders = cv2.Canny(imgGray, 50, 900)
 cv2.imshow('name', borders)
 waitEnter()
 

@@ -24,8 +24,8 @@ bool between(const DCEL::Edge* e, const DCEL::Edge* ec) {
 }
 
 DCEL::Edge* DCEL::add_segment(const point_type& u, const point_type& v) {
-    Edge* ev = new Edge(Vertex(v));
-    Edge* eu = new Edge(Vertex(u));
+    Edge* ev = new Edge(Vertex(v, step));
+    Edge* eu = new Edge(Vertex(u, step));
 
     ev->twin_ = eu;
     eu->twin_ = ev;

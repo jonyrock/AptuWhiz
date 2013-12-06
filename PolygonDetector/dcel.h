@@ -13,14 +13,15 @@ using namespace std;
 
 class DCEL {
 public:
-
+    
+    
     struct Vertex {
         point_type point;
 
-        Vertex(const point_type& p) : point(p) {
+        Vertex(const point_type& p, int step) {
+            point.x = p.x - (p.x % step);
+            point.y = p.y - (p.y % step);
         }
-
-
     };
 
     class Edge {
@@ -76,10 +77,13 @@ public:
     vector<DCEL::Edge*> get_all_edges(const Vertex v) const;
     vector<polygon_type> get_all_facets(const vector<DCEL::Edge*>&) const;
     ~DCEL();
-    
+
     vector<Edge*> edges;
-private:
     
+    DCEL(int step_ = 5):step(step_){}
+    
+private:
+    int step;
     // map from vertex to first edge
     map<const Vertex, Edge*> vertexEdge;
     void insert_new_edge(Edge*);
