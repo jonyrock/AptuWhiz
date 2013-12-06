@@ -81,8 +81,13 @@ void DCEL::insert_new_edge(Edge* edge) {
         cout << *edge << ", ";
         cout << eangle << endl;
         cout << "***********" << endl;
+        
+        // OMG
+        return;
+        
         throw logic_error("can't find prev edge!");
     }
+    
 
     edge->right_next(prevEdge->right_next());
     prevEdge->right_next(edge);

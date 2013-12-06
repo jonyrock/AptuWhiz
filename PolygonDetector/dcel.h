@@ -54,11 +54,11 @@ public:
             return this->twin()->next_ = e;
         }
 
-        inline const Vertex to() const {
+        inline Vertex to() const {
             return this->to_;
         }
 
-        inline const Vertex from() const {
+        inline Vertex from() const {
             return this->twin()->to();
         }
 
@@ -76,9 +76,10 @@ public:
     vector<DCEL::Edge*> get_all_edges(const Vertex v) const;
     vector<polygon_type> get_all_facets(const vector<DCEL::Edge*>&) const;
     ~DCEL();
-
-private:
+    
     vector<Edge*> edges;
+private:
+    
     // map from vertex to first edge
     map<const Vertex, Edge*> vertexEdge;
     void insert_new_edge(Edge*);
