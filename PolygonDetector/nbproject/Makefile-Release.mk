@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/dcel.o \
+	${OBJECTDIR}/geom_algorithms.o \
 	${OBJECTDIR}/main.o
 
 
@@ -67,6 +68,11 @@ ${OBJECTDIR}/dcel.o: dcel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/dcel.o dcel.cpp
+
+${OBJECTDIR}/geom_algorithms.o: geom_algorithms.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/geom_algorithms.o geom_algorithms.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
