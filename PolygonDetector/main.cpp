@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <random>
 
+#include "geom_algorithms.h"
+using namespace geom::algorithms;
+
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 
@@ -88,7 +91,7 @@ int main(int argc, char** argv) {
     cout << "read data" << endl;
     read_data();
 
-    REP(step, 30) {
+    REP(step, 1) {
         Mat img = Mat::zeros( HEIGHT, WIDTH, CV_8UC3 );
         cout << "building DCEL" << endl;
         DCEL* dcel = build_dcel(step + 1);
@@ -97,6 +100,10 @@ int main(int argc, char** argv) {
         waitEnter();
         cout << "end processing" << endl;
     }
+    
+    point_type p = segments_intesection(segment_type(point_type(0,0), point_type(5,5)),
+            segment_type(point_type(0,5), point_type(5,0)));
+    cout << p << endl;
 
     return 0;
 }

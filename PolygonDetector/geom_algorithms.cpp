@@ -1,5 +1,6 @@
 
 #include "geom_algorithms.h"
+#include <cassert>
 #include <algorithm>
 
 
@@ -52,14 +53,20 @@ namespace geom {
             return (res1 * res2) == 0;
         }
 
+        // check before that segments_inner_intersected !
+
         point_type segments_intesection(const segment_type& a, const segment_type& b) {
+            assert(segments_inner_intersected(a, b));
             // a -> p + tr  // a[0] = p
             // b -> q + us  // b[0] = q
             // u = (q − p) × r / (r × s)
             point_type r = a[1] - a[0];
             point_type s = b[1] - b[0];
-            int u = cross_prod(a[0] - b[0], r) / cross_prod(r, s);
-            return b[0] + (u * s);
+            int dc = cross_prod(r, s);
+            int tc = cross_prod(b[0] - a[0], r);
+            double u = tc * 1.0 / dc;
+            point_type us = u * s;
+            return b[0] + us;
         }
 
     }

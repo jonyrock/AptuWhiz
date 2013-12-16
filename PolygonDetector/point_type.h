@@ -45,25 +45,27 @@ inline bool operator !=(point_type const & a, point_type const & b) {
     return !(a == b);
 }
 
-
-#define DEF_POINT_BIOPERATION(op) \
-        inline point_type operator op(point_type const & a, point_type const & b) { \
-                point_type p(a); \
-                p.x = p.x op b.x; \
-                p.y = p.x op b.y; \
-        }
-
-DEF_POINT_BIOPERATION(+)
-DEF_POINT_BIOPERATION(-)
-DEF_POINT_BIOPERATION(*)
-DEF_POINT_BIOPERATION(/)
-
-#undef DEF_POINT_BIOPERATION
-
-inline point_type operator *(point_type const & p, int a) {
-    return p * point_type(a, a);
+inline point_type operator +(point_type const & a, point_type const & b) {
+    point_type p(a);
+    p.x = p.x + b.x;
+    p.y = p.y + b.y;
+    return p;
 }
 
-inline point_type operator *(int a, point_type const & p) {
+inline point_type operator -(point_type const & a, point_type const & b) {
+    point_type p(a);
+    p.x = p.x - b.x;
+    p.y = p.y - b.y;
+    return p;
+}
+
+inline point_type operator *(point_type const & pa, double a) {
+    point_type p(pa);
+    p.x *= a;
+    p.y *= a;
+    return p;
+}
+
+inline point_type operator *(double a, point_type & p) {
     return p * a;
 }
