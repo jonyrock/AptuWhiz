@@ -3,6 +3,7 @@
 #include "io.h"
 #include <iostream>
 #include <stdio.h>
+#include <random>
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
@@ -47,7 +48,14 @@ void read_data() {
 }
 
 void waitEnter() {
-    while (waitKey() != 1048586);
+
+    while (true) {
+        int key = waitKey();
+        if (key == 1048586)
+            break;
+        if (key == 10)
+            break;
+    }
 }
 
 DCEL* build_dcel(int step) {
@@ -67,8 +75,12 @@ DCEL* build_dcel(int step) {
 }
 
 void draw_dcel(Mat& img, const DCEL* dcel) {
+    
     for (auto e : dcel->edges) {
-        line(img, e->from().point, e->to().point, 50);
+        int c1 = 255 - (rand() % 200);
+        int c2 = 255 - (rand() % 200);
+        int c3 = 255 - (rand() % 200);
+        line(img, e->from().point, e->to().point, Scalar(c1, c2, c3));
     }
 }
 
@@ -77,7 +89,7 @@ int main(int argc, char** argv) {
     read_data();
 
     REP(step, 30) {
-        Mat img(Size(WIDTH, HEIGHT), CV_LOAD_IMAGE_GRAYSCALE, 255);
+        Mat img = Mat::zeros( HEIGHT, WIDTH, CV_8UC3 );
         cout << "building DCEL" << endl;
         DCEL* dcel = build_dcel(step + 1);
         draw_dcel(img, dcel);
