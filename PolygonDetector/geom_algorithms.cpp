@@ -64,11 +64,18 @@ namespace geom {
             point_type s = b[1] - b[0];
             int dc = cross_prod(r, s);
             int tc = cross_prod(b[0] - a[0], r);
-            double u = tc * 1.0 / dc;
+            double u = (tc * 1.0) / dc;
             point_type us = u * s;
             return b[0] + us;
         }
-
+        
+        
+        double segment_length(const segment_type& s) {
+            double xLen = s[0].x - s[1].x * 1.0;
+            double yLen = s[0].y - s[1].y * 1.0;
+            return sqrt(xLen * xLen + yLen * yLen);
+        }
+        
     }
 
 }

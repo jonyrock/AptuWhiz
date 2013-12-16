@@ -78,7 +78,6 @@ DCEL* build_dcel(int step) {
 }
 
 void draw_dcel(Mat& img, const DCEL* dcel) {
-    
     for (auto e : dcel->edges) {
         int c1 = 255 - (rand() % 200);
         int c2 = 255 - (rand() % 200);
@@ -92,7 +91,7 @@ int main(int argc, char** argv) {
     read_data();
 
     REP(step, 1) {
-        Mat img = Mat::zeros( HEIGHT, WIDTH, CV_8UC3 );
+        Mat img = Mat::zeros(HEIGHT, WIDTH, CV_8UC3);
         cout << "building DCEL" << endl;
         DCEL* dcel = build_dcel(step + 1);
         draw_dcel(img, dcel);
@@ -101,10 +100,6 @@ int main(int argc, char** argv) {
         cout << "end processing" << endl;
     }
     
-    point_type p = segments_intesection(segment_type(point_type(0,0), point_type(5,5)),
-            segment_type(point_type(0,5), point_type(5,0)));
-    cout << p << endl;
-
     return 0;
 }
 

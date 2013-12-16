@@ -23,7 +23,7 @@ public:
             point.y = p.y - (p.y % step);
         }
     };
-
+    
     class Edge {
         friend DCEL;
     private:
@@ -34,7 +34,6 @@ public:
 
         Edge(const Vertex& v) : to_(v) {
             next_ = NULL;
-            twin_ = NULL;
             visited_ = false;
         }
     public:
@@ -72,13 +71,18 @@ public:
             return out;
         }
     };
-
-    Edge* add_segment(const point_type& u, const point_type& v);
+    
+    typedef vector<Edge*> edgeList;
+    void add_segment(const point_type& u, const point_type& v);
     vector<DCEL::Edge*> get_all_edges(const Vertex v) const;
     vector<polygon_type> get_all_facets(const vector<DCEL::Edge*>&) const;
+    void deleteEdge(Edge* it);
+    void deleteEdgeWithTwin(edgeList::iterator it);
+    
+    
     ~DCEL();
-
-    vector<Edge*> edges;
+    
+    edgeList edges;
     
     DCEL(int step_ = 5):step(step_){}
     

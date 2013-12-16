@@ -19,7 +19,6 @@ namespace geom {
             return v.x * w.y - v.y * w.x;
         }
 
-
         int left_turn(point_type a, point_type b, point_type c);
 
         int left_turn(const segment_type& segment, point_type p);
@@ -31,7 +30,9 @@ namespace geom {
         bool segments_inner_intersected(const segment_type& a, const segment_type& b);
 
         point_type segments_intesection(const segment_type& a, const segment_type& b);
-
+        
+        double segment_length(const segment_type& s);
+        
     }
 }
 
