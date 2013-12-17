@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <map>
+#include <set>
 #include <stddef.h>
 
 
@@ -13,15 +14,10 @@ using namespace std;
 
 class DCEL {
 public:
-    
-    
+        
     struct Vertex {
         point_type point;
-
-        Vertex(const point_type& p, int step) {
-            point.x = p.x - (p.x % step);
-            point.y = p.y - (p.y % step);
-        }
+        Vertex(point_type point_): point(point_){}
     };
     
     class Edge {
@@ -72,7 +68,7 @@ public:
         }
     };
     
-    typedef vector<Edge*> edgeList;
+    typedef set<Edge*> edgeList;
     void add_segment(const point_type& u, const point_type& v);
     vector<DCEL::Edge*> get_all_edges(const Vertex v) const;
     vector<polygon_type> get_all_facets(const vector<DCEL::Edge*>&) const;

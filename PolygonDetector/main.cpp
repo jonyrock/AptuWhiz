@@ -90,7 +90,7 @@ int main(int argc, char** argv) {
     cout << "read data" << endl;
     read_data();
 
-    REP(step, 1) {
+    REP(step, 20) {
         Mat img = Mat::zeros(HEIGHT, WIDTH, CV_8UC3);
         cout << "building DCEL" << endl;
         DCEL* dcel = build_dcel(step + 1);
