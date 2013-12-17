@@ -28,6 +28,9 @@ bool between(const DCEL::Edge* e, const DCEL::Edge* ec) {
 void DCEL::deleteEdge(Edge* edge) {
 
     Vertex from = edge->from();
+    if(from.point == point_type(12,72)){
+        int kkkkk = 10;
+    }
 
     auto edges = get_all_edges(from);
 
@@ -38,7 +41,17 @@ void DCEL::deleteEdge(Edge* edge) {
             break;
         }
     }
-    assert(prevEdge != NULL);
+    //    assert(prevEdge != NULL);
+    if (prevEdge == NULL) {
+        cout << "prev edge null: " << *edge << endl;
+        cout << "vvvv EDGES vvvv" << endl;
+        Edge* prevEdge = NULL;
+        for (auto e : edges) {
+            cout << "   ->" << *e << endl;
+        }
+        cout << "---------------" << endl;
+        int kkk = 10;
+    }
     prevEdge->right_next(edge->right_next());
     if (edges.size() == 1) {
         vertexEdge[from] = NULL;
@@ -66,14 +79,14 @@ void DCEL::add_segment(const point_type& u_, const point_type& v_) {
 
     u.x -= u.x % step;
     u.y -= u.y % step;
-    
+
     v.x -= v.x % step;
     v.y -= v.y % step;
-    
-    if(u == v)
+
+    if (u == v)
         return;
 
-    cout << "add segment " << u << " " << v << endl;
+    //    cout << "add segment " << u << " " << v << endl;
     segment_type newSegment(u, v);
     for (auto it = edges.begin(); it != edges.end(); ++it) {
         auto se = (**it).get_segment();
@@ -93,23 +106,32 @@ void DCEL::add_segment(const point_type& u_, const point_type& v_) {
     Edge* ev = new Edge(Vertex(v));
     Edge* eu = new Edge(Vertex(u));
 
+    ev->twin_ = eu;
+    eu->twin_ = ev;
+    
+    // check only right 
+    bool insertSucc = insert_new_edge(ev);
+    if(!insertSucc) {
+        delete ev;
+        delete eu;
+        return;
+    }
+    insert_new_edge(eu);
+    
     edges.insert(ev);
     edges.insert(eu);
 
-    ev->twin_ = eu;
-    eu->twin_ = ev;
-
-    insert_new_edge(ev);
-    insert_new_edge(eu);
-
 }
 
-void DCEL::insert_new_edge(Edge* edge) {
+bool DCEL::insert_new_edge(Edge* edge) {
     const Vertex& from = edge->from();
+    if(from.point == point_type(12,72)){
+        int kkkkk = 10;
+    }
     if (vertexEdge.find(from) == vertexEdge.end() || vertexEdge[from] == NULL) {
         vertexEdge[from] = edge;
         edge->right_next(edge);
-        return;
+        return true;
     }
 
     auto edges = get_all_edges(from);
@@ -137,14 +159,14 @@ void DCEL::insert_new_edge(Edge* edge) {
                 auto len1 = segment_length(edge->get_segment());
                 auto len2 = segment_length(e->get_segment());
                 if (edge->to().point == e->to().point)
-                    return;
+                    return false;
                 //                cout << "add split segment from" << edge->from().point << " to split "  << edge->to().point << e->to().point << endl;
                 if (len2 > len1) {
                     deleteEdge(e);
                     add_segment(from.point, edge->to().point);
                 }
                 add_segment(edge->to().point, e->to().point);
-                return;
+                return true;
             }
             if (angleBefore > eangle && angleAfter < eangle) {
                 prevEdge = e;
@@ -152,7 +174,8 @@ void DCEL::insert_new_edge(Edge* edge) {
             }
         }
     }
-
+    
+    assert(prevEdge != NULL);
     if (prevEdge == NULL) {
         cout << "-----------" << endl;
         for (auto e : edges) {
@@ -163,16 +186,11 @@ void DCEL::insert_new_edge(Edge* edge) {
         cout << *edge << ", ";
         cout << eangle << endl;
         cout << "***********" << endl;
-
-        // OMG
-        return;
-
-        throw logic_error("can't find prev edge!");
     }
-
 
     edge->right_next(prevEdge->right_next());
     prevEdge->right_next(edge);
+    return true;
 
 }
 

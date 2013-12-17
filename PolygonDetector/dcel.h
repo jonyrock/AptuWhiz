@@ -86,7 +86,7 @@ private:
     int step;
     // map from vertex to first edge
     map<const Vertex, Edge*> vertexEdge;
-    void insert_new_edge(Edge*);
+    bool insert_new_edge(Edge*); // return false if same edge exists
     polygon_type walk(Edge*) const;
 
 };
