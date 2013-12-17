@@ -73,7 +73,7 @@ public:
     vector<DCEL::Edge*> get_all_edges(const Vertex v) const;
     vector<polygon_type> get_all_facets(const vector<DCEL::Edge*>&) const;
     void deleteEdge(Edge* it);
-    void deleteEdgeWithTwin(edgeList::iterator it);
+    void deleteEdgeWithTwin(Edge* it);
     
     
     ~DCEL();

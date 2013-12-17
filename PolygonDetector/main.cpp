@@ -93,7 +93,7 @@ int main(int argc, char** argv) {
     REP(step, 20) {
         Mat img = Mat::zeros(HEIGHT, WIDTH, CV_8UC3);
         cout << "building DCEL" << endl;
-        DCEL* dcel = build_dcel(step + 1 + 3);
+        DCEL* dcel = build_dcel(step + 1 + 6);
         draw_dcel(img, dcel);
         imshow("Contours", img);
         waitEnter();
