@@ -5,7 +5,6 @@
 #include <boost/lexical_cast.hpp>
 #include <stdexcept>
 
-
 struct segment_type {
 
     segment_type() {
@@ -47,11 +46,13 @@ inline point_type const & max(segment_type const & seg) {
 }
 
 inline bool operator ==(segment_type const & a, segment_type const & b) {
-    return (a[0] == b[0]) && (a[1] == b[1]);
+    return ((a[0] == b[0]) && (a[1] == b[1])) ||
+            (a[0] == b[1]) && (a[1] == b[0]);
 }
 
 inline bool operator !=(segment_type const & a, segment_type const & b) {
     return !(a == b);
 }
+
 
 

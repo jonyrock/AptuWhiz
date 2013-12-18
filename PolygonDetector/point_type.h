@@ -19,10 +19,7 @@ struct point_type {
         return cv::Point(x, y);
     }
 
-    friend std::ostream & operator <<(std::ostream & out, point_type const & pt) {
-        out << "(" << pt.x << ", " << pt.y << ")";
-        return out;
-    }
+    
 
 };
 

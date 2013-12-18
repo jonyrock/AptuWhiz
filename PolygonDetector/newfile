@@ -1,0 +1,59 @@
+read data
+building DCEL
+add new segment (252, 196), (259, 231)
+OK
+add new segment (259, 231), (238, 231)
+OK
+add new segment (238, 231), (238, 245)
+OK
+add new segment (238, 245), (238, 231)
+add new segment (238, 231), (259, 231)
+add new segment (259, 231), (259, 196)
+OK
+add new segment (259, 196), (287, 196)
+OK
+add new segment (0, 28), (7, 35)
+OK
+add new segment (7, 35), (7, 77)
+OK
+add new segment (7, 77), (14, 70)
+OK
+add new segment (14, 70), (14, 77)
+OK
+add new segment (14, 77), (14, 119)
+OK
+add new segment (14, 119), (7, 133)
+OK
+add new segment (7, 133), (14, 140)
+OK
+add new segment (14, 140), (14, 154)
+OK
+add new segment (14, 154), (35, 161)
+OK
+add new segment (35, 161), (42, 175)
+OK
+add new segment (42, 175), (28, 182)
+OK
+add new segment (28, 182), (28, 175)
+OK
+add new segment (28, 175), (35, 175)
+OK
+add new segment (35, 175), (28, 175)
+add new segment (28, 175), (28, 182)
+add new segment (28, 182), (14, 189)
+OK
+add new segment (14, 189), (0, 196)
+OK
+add new segment (0, 196), (42, 175)
+add new segment (14, 189), (42, 175)
+add new segment (28, 182), (42, 175)
+add new segment (42, 175), (0, 203)
+OK
+add new segment (0, 203), (21, 189)
+delete edge (0, 203) -> (42, 175)
+delete edge (42, 175) -> (0, 203)
+add new segment (42, 175), (21, 189)
+OK
+delete edge (0, 203) -> (42, 175)
+prev edge null: (0, 203) -> (42, 175)
+vvvv EDGES vvvv
