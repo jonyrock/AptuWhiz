@@ -8,6 +8,7 @@
 #include <map>
 #include <set>
 #include <stddef.h>
+#include "io.h"
 
 
 using namespace std;
@@ -73,7 +74,7 @@ public:
     vector<DCEL::Edge*> get_all_edges(const Vertex v) const;
     vector<polygon_type> get_all_facets(const vector<DCEL::Edge*>&) const;
     void deleteEdge(Edge* it);
-    void deleteEdgeWithTwin(edgeList::iterator it);
+    void deleteEdgeWithTwin(Edge* e);
     
     
     ~DCEL();
@@ -86,7 +87,7 @@ private:
     int step;
     // map from vertex to first edge
     map<const Vertex, Edge*> vertexEdge;
-    bool insert_new_edge(Edge*); // return false if same edge exists
+    void insert_new_edge(Edge*); // return conflict edge or NULL
     polygon_type walk(Edge*) const;
 
 };
