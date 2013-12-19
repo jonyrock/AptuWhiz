@@ -9,6 +9,7 @@
 #include <set>
 #include <stddef.h>
 #include "io.h"
+#include "stdexcept"
 
 
 using namespace std;
@@ -81,7 +82,10 @@ public:
     
     edgeList edges;
     
-    DCEL(int step_ = 5):step(step_){}
+    DCEL(int step_ = 5):step(step_) {
+        if(step_ <= 0)
+            throw invalid_argument("Step can't be negative or equal zero.");
+    }
     
 private:
     int step;

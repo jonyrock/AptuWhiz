@@ -10,6 +10,7 @@ using namespace geom::algorithms;
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
 
 using namespace std;
 using namespace cv;
@@ -92,14 +93,18 @@ int main(int argc, char** argv) {
 
     REP(step, 20) {
         Mat img = Mat::zeros(HEIGHT, WIDTH, CV_8UC3);
-        cout << "building DCEL" << endl;
-        DCEL* dcel = build_dcel(step + 1 + 6);
+        cout << "building DCEL " << step + 1 << endl;
+        DCEL* dcel = build_dcel(step + 1);
         draw_dcel(img, dcel);
-        imshow("Contours", img);
+
+        Mat imgResized = Mat::zeros(HEIGHT * 2, WIDTH * 2, CV_8UC3);
+        resize(img, imgResized, Size(HEIGHT * 2, WIDTH * 2));
+        imshow("Contours", imgResized);
         waitEnter();
         cout << "end processing" << endl;
+        delete dcel;
     }
-    
+
     return 0;
 }
 
