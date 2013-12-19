@@ -1,10 +1,12 @@
 #include "dcel.h"
 #include "geom_algorithms.h"
+#include "io.h"
 #include <vector>
+#include <stack>
 #include <stdexcept>
 #include <math.h>
 #include <iostream>
-#include "io.h"
+
 
 //#define DEBUG
 
@@ -215,11 +217,11 @@ void DCEL::insert_new_edge(Edge* edge) {
 
 #ifdef DEBUG
     cout << "insert" << *edge << endl;
-    if(from.point == point_type(12,72)){
+    if (from.point == point_type(12, 72)) {
         int kkkk = 10;
     }
 #endif
-    
+
     if (vertexEdge.find(from) == vertexEdge.end() || vertexEdge[from] == NULL) {
         vertexEdge[from] = edge;
         edge->right_next(edge);
@@ -335,6 +337,44 @@ vector<polygon_type> DCEL::get_all_facets(
     }
 
     return res;
+}
+
+void DCEL::delete_leafs() {
+
+//    stack<Edge*> leafs;
+//
+//    for (auto e : edges) {
+//        if (e->is_leaf()) {
+//            leafs.push(e);
+//        }
+//    }
+//    
+//    cout << "leafs size: " << leafs.size() << endl;
+//
+//    while (!leafs.empty()) {
+//        Edge* e = leafs.top();
+//        leafs.pop();
+//        while(true) {
+//            break;
+//        }
+//    }
+    
+    
+    while(true){
+        bool foundLeaf = false;
+        for(auto e: edges){
+            if(e->is_leaf()){
+                foundLeaf = true;
+                deleteEdgeWithTwin(e);
+                break;
+            }
+        }
+        if(!foundLeaf)
+            break;
+    }
+
+
+
 }
 
 DCEL::~DCEL() {

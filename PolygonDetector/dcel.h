@@ -30,10 +30,11 @@ public:
         const Vertex to_;
         bool visited_;
 
-        Edge(const Vertex& v) : to_(v) {
+        Edge(const Vertex& v) : to_(v), isDeleted(false) {
             next_ = NULL;
             visited_ = false;
         }
+        bool isDeleted;
     public:
 
         inline Edge* next() const {
@@ -68,6 +69,10 @@ public:
             out << e.from().point << " -> " << e.to().point;
             return out;
         }
+        
+        bool is_leaf() {
+            return next() == twin();
+        }
     };
     
     typedef set<Edge*> edgeList;
@@ -77,6 +82,7 @@ public:
     void deleteEdge(Edge* it);
     void deleteEdgeWithTwin(Edge* e);
     
+    void delete_leafs();
     
     ~DCEL();
     
@@ -89,7 +95,7 @@ public:
     
 private:
     int step;
-    // map from vertex to first edge
+    // map from vertex to first edges
     map<const Vertex, Edge*> vertexEdge;
     void insert_new_edge(Edge*); 
     polygon_type walk(Edge*) const;

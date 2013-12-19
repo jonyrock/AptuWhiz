@@ -87,19 +87,25 @@ void draw_dcel(Mat& img, const DCEL* dcel) {
     }
 }
 
+void show_dcel(DCEL* dcel) {
+    Mat img = Mat::zeros(HEIGHT, WIDTH, CV_8UC3);
+    draw_dcel(img, dcel);
+    Mat imgResized = Mat::zeros(HEIGHT * 2, WIDTH * 2, CV_8UC3);
+    resize(img, imgResized, Size(HEIGHT * 2, WIDTH * 2));
+    imshow("Contours", imgResized);
+}
+
 int main(int argc, char** argv) {
     cout << "read data" << endl;
     read_data();
 
     REP(step, 20) {
-        Mat img = Mat::zeros(HEIGHT, WIDTH, CV_8UC3);
         cout << "building DCEL " << step + 1 << endl;
         DCEL* dcel = build_dcel(step + 1);
-        draw_dcel(img, dcel);
-
-        Mat imgResized = Mat::zeros(HEIGHT * 2, WIDTH * 2, CV_8UC3);
-        resize(img, imgResized, Size(HEIGHT * 2, WIDTH * 2));
-        imshow("Contours", imgResized);
+        show_dcel(dcel);
+        waitEnter();
+        dcel->delete_leafs();
+        show_dcel(dcel);
         waitEnter();
         cout << "end processing" << endl;
         delete dcel;
