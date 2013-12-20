@@ -127,9 +127,16 @@ int main(int argc, char** argv) {
         DCEL* dcel = build_dcel(step + 1);
         show_dcel(dcel);
         waitEnter();
+        
+        dcel->merge_near();
+        show_dcel(dcel);
+        waitEnter();
+        
         dcel->delete_leafs();
         show_dcel(dcel);
         waitEnter();
+        
+        
         cout << "end processing" << endl;
         auto inPol = dcel->find_center_polygon();
 //        cout << "---------" << endl;

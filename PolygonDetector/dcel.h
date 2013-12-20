@@ -85,6 +85,8 @@ public:
     void deleteEdgeWithTwin(Edge* e);
 
     void delete_leafs();
+    
+    void merge_near();
 
     polygon_type find_center_polygon();
 

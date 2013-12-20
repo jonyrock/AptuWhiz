@@ -104,17 +104,7 @@ void DCEL::deleteEdgeWithTwin(Edge* e) {
 #endif
 }
 
-void DCEL::add_segment(const point_type& u_, const point_type& v_) {
-
-
-    point_type u(u_);
-    point_type v(v_);
-
-    u.x -= u.x % step;
-    u.y -= u.y % step;
-
-    v.x -= v.x % step;
-    v.y -= v.y % step;
+void DCEL::add_segment(const point_type& u, const point_type& v) {
 
     if (u == v)
         return;
@@ -167,7 +157,7 @@ void DCEL::add_segment(const point_type& u_, const point_type& v_) {
 #ifdef DEBUG
                 cout << "inner add 2 " << newSegment << endl;
 #endif
-                add_segment(u_, v_);
+                add_segment(u, v);
                 return;
             } else {
 #ifdef DEBUG
@@ -388,7 +378,7 @@ polygon_type DCEL::find_center_polygon() {
         if (left_turn(e->get_segment(), intersectionSegment[0]) != 1)
             continue;
         if (segments_intersected(e->get_segment(), intersectionSegment)) {
-            
+
             auto ip = segments_intesection(e->get_segment(), intersectionSegment);
             auto seg = segment_type(intersectionSegment[0], ip);
             double myLen = segment_length(seg);
@@ -400,6 +390,30 @@ polygon_type DCEL::find_center_polygon() {
     }
 
     return walk(closestEdge);
+
+}
+
+void DCEL::merge_near() {
+
+    vector<point_type> points;
+
+    for (auto ve : vertexEdge) {
+        if(ve.second == NULL)
+            continue;
+        points.push_back(ve.first.point);
+    }
+
+    for (size_t i = 0; i < points.size(); i++) {
+        for (size_t j = i + 1; j < points.size(); j++) {
+            segment_type seglen(points[i], points[j]);
+            auto len = segment_length(seglen);
+            if (len < step) {
+                add_segment(points[i], points[j]);
+            }
+
+        }
+
+    }
 
 }
 
