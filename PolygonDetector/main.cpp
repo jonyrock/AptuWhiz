@@ -63,7 +63,7 @@ void waitEnter() {
 }
 
 DCEL* build_dcel(int step) {
-    DCEL* dcel = new DCEL(step);
+    DCEL* dcel = new DCEL(step, WIDTH, HEIGHT);
 
     REP(i, POLYGONS.size()) {
         polygon_type& ps = POLYGONS[i];
@@ -95,6 +95,29 @@ void show_dcel(DCEL* dcel) {
     imshow("Contours", imgResized);
 }
 
+void draw_polygon(Mat& img, const polygon_type& ps) {
+    Point psp[1][ps.size()];
+    for (size_t i = 0; i < ps.size(); i++) {
+        psp[0][i] = Point(ps[i].x, ps[i].y);
+    }
+    const Point * ppt[1] = {psp[0]};
+    int npt[] = {(int) ps.size()};
+    fillPoly(img,
+            ppt,
+            npt,
+            1,
+            Scalar(255, 255, 255), 8);
+
+}
+
+void show_polygon(const polygon_type& ps) {
+    Mat img = Mat::zeros(HEIGHT, WIDTH, CV_8UC3);
+    draw_polygon(img, ps);
+    Mat imgResized = Mat::zeros(HEIGHT * 2, WIDTH * 2, CV_8UC3);
+    resize(img, imgResized, Size(HEIGHT * 2, WIDTH * 2));
+    imshow("Contours", imgResized);
+}
+
 int main(int argc, char** argv) {
     cout << "read data" << endl;
     read_data();
@@ -108,6 +131,16 @@ int main(int argc, char** argv) {
         show_dcel(dcel);
         waitEnter();
         cout << "end processing" << endl;
+        auto inPol = dcel->find_center_polygon();
+//        cout << "---------" << endl;
+//        for (auto p : inPol) {
+//            cout << p << " ";
+//        }
+//        cout << endl << "xxxxxxx" << endl;
+        //        drawContours()
+        show_polygon(inPol);
+        waitEnter();
+
         delete dcel;
     }
 

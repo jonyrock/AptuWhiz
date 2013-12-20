@@ -16,12 +16,14 @@ using namespace std;
 
 class DCEL {
 public:
-        
+
     struct Vertex {
         point_type point;
-        Vertex(point_type point_): point(point_){}
+
+        Vertex(point_type point_) : point(point_) {
+        }
     };
-    
+
     class Edge {
         friend DCEL;
     private:
@@ -69,35 +71,39 @@ public:
             out << e.from().point << " -> " << e.to().point;
             return out;
         }
-        
+
         bool is_leaf() {
             return next() == twin();
         }
     };
-    
+
     typedef set<Edge*> edgeList;
     void add_segment(const point_type& u, const point_type& v);
     vector<DCEL::Edge*> get_all_edges(const Vertex v) const;
     vector<polygon_type> get_all_facets(const vector<DCEL::Edge*>&) const;
     void deleteEdge(Edge* it);
     void deleteEdgeWithTwin(Edge* e);
-    
+
     void delete_leafs();
-    
+
+    polygon_type find_center_polygon();
+
     ~DCEL();
-    
+
     edgeList edges;
-    
-    DCEL(int step_ = 5):step(step_) {
-        if(step_ <= 0)
+    int width, height;
+
+    DCEL(int step_, int width_, int height_) : step(step_),
+    width(width_), height(height_) {
+        if (step_ <= 0)
             throw invalid_argument("Step can't be negative or equal zero.");
     }
-    
+
 private:
     int step;
     // map from vertex to first edges
     map<const Vertex, Edge*> vertexEdge;
-    void insert_new_edge(Edge*); 
+    void insert_new_edge(Edge*);
     polygon_type walk(Edge*) const;
 
 };

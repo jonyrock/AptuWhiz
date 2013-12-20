@@ -53,9 +53,7 @@ namespace geom {
             return (res1 * res2) == 0;
         }
 
-        // check before that segments_inner_intersected !
         point_type segments_intesection(const segment_type& a, const segment_type& b) {
-            assert(segments_inner_intersected(a, b));
             // a -> p + tr  // a[0] = p
             // b -> q + us  // b[0] = q
             // u = (q − p) × r / (r × s)

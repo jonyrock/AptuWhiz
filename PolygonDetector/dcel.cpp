@@ -341,39 +341,65 @@ vector<polygon_type> DCEL::get_all_facets(
 
 void DCEL::delete_leafs() {
 
-//    stack<Edge*> leafs;
-//
-//    for (auto e : edges) {
-//        if (e->is_leaf()) {
-//            leafs.push(e);
-//        }
-//    }
-//    
-//    cout << "leafs size: " << leafs.size() << endl;
-//
-//    while (!leafs.empty()) {
-//        Edge* e = leafs.top();
-//        leafs.pop();
-//        while(true) {
-//            break;
-//        }
-//    }
-    
-    
-    while(true){
+    //    stack<Edge*> leafs;
+    //
+    //    for (auto e : edges) {
+    //        if (e->is_leaf()) {
+    //            leafs.push(e);
+    //        }
+    //    }
+    //    
+    //    cout << "leafs size: " << leafs.size() << endl;
+    //
+    //    while (!leafs.empty()) {
+    //        Edge* e = leafs.top();
+    //        leafs.pop();
+    //        while(true) {
+    //            break;
+    //        }
+    //    }
+
+
+    while (true) {
         bool foundLeaf = false;
-        for(auto e: edges){
-            if(e->is_leaf()){
+        for (auto e : edges) {
+            if (e->is_leaf()) {
                 foundLeaf = true;
                 deleteEdgeWithTwin(e);
                 break;
             }
         }
-        if(!foundLeaf)
+        if (!foundLeaf)
             break;
     }
 
 
+
+}
+
+polygon_type DCEL::find_center_polygon() {
+
+    Edge* closestEdge = NULL;
+    segment_type intersectionSegment(point_type(width / 2, height / 2),
+            point_type(width + 1, height + 1));
+
+    double minLen = INFINITY;
+    for (auto e : edges) {
+        if (left_turn(e->get_segment(), intersectionSegment[0]) != 1)
+            continue;
+        if (segments_intersected(e->get_segment(), intersectionSegment)) {
+            
+            auto ip = segments_intesection(e->get_segment(), intersectionSegment);
+            auto seg = segment_type(intersectionSegment[0], ip);
+            double myLen = segment_length(seg);
+            if (myLen < minLen) {
+                minLen = myLen;
+                closestEdge = e;
+            }
+        }
+    }
+
+    return walk(closestEdge);
 
 }
 
